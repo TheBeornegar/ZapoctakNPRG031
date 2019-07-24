@@ -16,8 +16,6 @@ namespace SomewhatClicker
 {
     public partial class Form1 : Form
     {
-        
-
         public Form1()
         {
             InitializeComponent();
@@ -40,7 +38,6 @@ namespace SomewhatClicker
           
             Form2 f2 = new Form2(this);
             f2.Show();
-            
         }
 
         private void LoadGameButton_Click(object sender, EventArgs e)
@@ -54,12 +51,8 @@ namespace SomewhatClicker
                     Atributes.Dexterity = int.Parse(save.ReadLine());
                     Atributes.Charisma = int.Parse(save.ReadLine());
                     Atributes.Constitution = int.Parse(save.ReadLine());
-                    Atributes.Damage = int.Parse(save.ReadLine());
-                    Atributes.MaxHP = int.Parse(save.ReadLine());
                     Atributes.AbilityPoints = int.Parse(save.ReadLine());
-                    Atributes.CriticalChance = int.Parse(save.ReadLine());
                 }
-
                 this.Hide();
                 Form f2 = new Form2(this);
                 f2.Show();
@@ -68,9 +61,7 @@ namespace SomewhatClicker
             {
                 Form Error = new ErrorForm();
                 Error.Show();
-
             }
-            
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
