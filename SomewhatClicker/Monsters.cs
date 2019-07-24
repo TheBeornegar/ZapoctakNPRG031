@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +22,6 @@ namespace SomewhatClicker
             {
                 MonsterHP = 50 + Atributes.Level * Atributes.Level;
             }
-
         }
 
         public static void ComputeMonsterDmg()
@@ -39,7 +38,6 @@ namespace SomewhatClicker
             {
                 MonsterDmg = 1 + Atributes.Level * 4;
             }
-
         }
 
         public static void ComputeMonsterCrit()
