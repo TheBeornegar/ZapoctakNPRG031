@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,10 +11,9 @@ using System.Windows.Forms;
 namespace SomewhatClicker
 {
     public partial class Form3 : Form
-        
     {
         double PlayerHPUnit, MonsterHPUnit;
-        int HPBarWidth, HPBarHeight, MonsterHPGone,PlayerHPGone;
+        int HPBarWidth, HPBarHeight, MonsterHPGone, PlayerHPGone;
 
         Bitmap Monsterbmp;
         Bitmap Playerbmp;
@@ -36,7 +35,6 @@ namespace SomewhatClicker
                 throw new ArgumentNullException("f2");
             }
             _f2 = f2;
-
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -51,13 +49,12 @@ namespace SomewhatClicker
             Battle.MonsterHPLeft = Monsters.MonsterHP;
             Battle.PlayerHPLeft = Atributes.MaxHP;
 
-
             Monsterbmp = new Bitmap(HPBarWidth, HPBarHeight);
             Playerbmp = new Bitmap(HPBarWidth, HPBarHeight);
 
             PlayerPicture.Image = PlayerReadyImg;
             MonsterPicture.Image = MonsterReadyImg;
-           }
+        }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -77,34 +74,27 @@ namespace SomewhatClicker
             Close();
         }
 
-
-
-
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             MonsterPicture.Image = MonsterHitImg;
             timer3.Start();
 
             Battle.PlayerHPLeft -= Battle.ComputeMonsterStrike(Monsters.MonsterDmg, Monsters.MonsterCrit);
-            PlayerHPGone = Atributes.MaxHP - Battle.PlayerHPLeft ;
+            PlayerHPGone = Atributes.MaxHP - Battle.PlayerHPLeft;
 
-
-            PlayerG = Graphics.FromImage(Playerbmp); 
+            PlayerG = Graphics.FromImage(Playerbmp);
             PlayerG.Clear(Color.Red);
             PlayerG.FillRectangle(Brushes.Gray, (Single)(Battle.PlayerHPLeft * PlayerHPUnit), 0, (Single)(PlayerHPGone * PlayerHPUnit), (Single)(HPBarHeight));
             PlayerG.DrawString(Battle.PlayerHPLeft.ToString() + "/" + Atributes.MaxHP.ToString(), new Font("Arial", HPBarHeight / 2), Brushes.Black, new PointF(HPBarWidth / 2 - HPBarHeight, HPBarHeight / 10));
             PlayerHPBar.Image = Playerbmp;
 
-            if(Battle.CheckForDeath(Battle.PlayerHPLeft))
+            if (Battle.CheckForDeath(Battle.PlayerHPLeft))
             {
                 this.timer1.Stop();
 
-                WinLostForm LostForm = new WinLostForm(this,_f2);
+                WinLostForm LostForm = new WinLostForm(this, _f2);
                 LostForm.ShowDialog();
-                
             }
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -113,29 +103,25 @@ namespace SomewhatClicker
             timer2.Start();
 
             if (Battle.PlayerHPLeft == Atributes.MaxHP)
-             {
-                 this.timer1.Start();
-             }
+            {
+                this.timer1.Start();
+            }
 
             Battle.MonsterHPLeft -= Battle.ComputePlayerStrike(Atributes.Damage, Atributes.CriticalChance);
             MonsterHPGone = Monsters.MonsterHP - Battle.MonsterHPLeft;
-            
 
             MonsterG = Graphics.FromImage(Monsterbmp);
             MonsterG.Clear(Color.Red);
-            MonsterG.FillRectangle(Brushes.Gray,(Single) (Battle.MonsterHPLeft*MonsterHPUnit), 0,(Single)(MonsterHPGone*MonsterHPUnit),(Single) (HPBarHeight));
+            MonsterG.FillRectangle(Brushes.Gray, (Single)(Battle.MonsterHPLeft * MonsterHPUnit), 0, (Single)(MonsterHPGone * MonsterHPUnit), (Single)(HPBarHeight));
             MonsterG.DrawString(Battle.MonsterHPLeft + "/" + Monsters.MonsterHP.ToString(), new Font("Arial", HPBarHeight / 2), Brushes.Black, new PointF(HPBarWidth / 2 - HPBarHeight, HPBarHeight / 10));
             MonsterHPBar.Image = Monsterbmp;
 
-            
-           if(Battle.CheckForDeath(Battle.MonsterHPLeft))
+            if (Battle.CheckForDeath(Battle.MonsterHPLeft))
             {
                 this.timer1.Stop();
 
-                WinLostForm WonForm = new WinLostForm(this,_f2);
+                WinLostForm WonForm = new WinLostForm(this, _f2);
                 WonForm.ShowDialog();
-
-
             }
         }
     }
