@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +13,6 @@ namespace SomewhatClicker
 {
     public partial class Form2 : Form
     {
-
         Form1 _f1;
 
         public Form2(Form1 f1)
@@ -26,7 +25,6 @@ namespace SomewhatClicker
             _f1 = f1;
             Atributes.ComputeAllStats();
             RefreshAtributeValues();
-
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -43,7 +41,6 @@ namespace SomewhatClicker
             Monsters.ComputeMonsterCrit();
             Form f3 = new Form3(this);
             f3.ShowDialog();
-
         }
 
         private void button2_Click(object sender, EventArgs e)//DEXTERITY +
@@ -65,7 +62,6 @@ namespace SomewhatClicker
             Atributes.StatUp(ref Atributes.Charisma);
             Atributes.ComputeAllStats();
             RefreshAtributeValues();
-
         }
 
         private void button5_Click(object sender, EventArgs e)// DEXTERITY -
@@ -82,7 +78,6 @@ namespace SomewhatClicker
             RefreshAtributeValues();
         }
 
-        
         private void button7_Click(object sender, EventArgs e) // CHARISMA -
         {
             Atributes.ResetStat(ref Atributes.Charisma);
@@ -94,11 +89,8 @@ namespace SomewhatClicker
         {
             Close();
             _f1.Close();
-
-
         }
 
-        
         public void RefreshAtributeValues()
         {
             LabelLevelNumber.Text = Atributes.Level.ToString();
@@ -110,6 +102,5 @@ namespace SomewhatClicker
             LabelConNumber.Text = Atributes.Constitution.ToString();
             LabelCharNumber.Text = Atributes.Charisma.ToString();
         }
-
     }
 }
