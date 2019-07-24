@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,18 +19,18 @@ namespace SomewhatClicker
 
         public static void StatUp(ref int atribute)
         {
-            if(AbilityPoints > 0)
+            if (AbilityPoints > 0)
             {
-                AbilityPoints -=1;
+                AbilityPoints -= 1;
                 atribute++;
             }
         }
 
         public static void ResetStat(ref int atribute)
         {
-            if(atribute > 1)
+            if (atribute > 1)
             {
-                atribute -=1;
+                atribute -= 1;
                 AbilityPoints++;
             }
         }
@@ -44,21 +44,20 @@ namespace SomewhatClicker
         public static void ComputeDamage()
         {
             int defaultDamage = 5;
-            Damage = (defaultDamage*2 + (Dexterity-1) + (Level-1)) / 2;
+            Damage = (defaultDamage * 2 + (Dexterity - 1) + (Level - 1)) / 2;
         }
 
         public static void ComputeMaxHP()
         {
             int defaultMaxHP = 50;
-            MaxHP = defaultMaxHP + (Level - 1) * 10 + (Constitution-1) * 5;
-
+            MaxHP = defaultMaxHP + (Level - 1) * 10 + (Constitution - 1) * 5;
         }
 
         public static void ComputeCriticalChance()
         {
             int defaultCriticalChance = 0;
             CriticalChance = defaultCriticalChance + (Charisma - 1) * 7;
-            if(CriticalChance > 100)
+            if (CriticalChance > 100)
             {
                 CriticalChance = 100;
             }
