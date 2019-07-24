@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +15,8 @@ namespace SomewhatClicker
         public static int ComputePlayerStrike(int Damage, int CriticalChance)
         {
             Random Rnd = new Random();
-                int PlayerRNG = Rnd.Next(100);
-            if(PlayerRNG < Atributes.CriticalChance)
+            int PlayerRNG = Rnd.Next(100);
+            if (PlayerRNG < Atributes.CriticalChance)
             {
                 return 2 * Atributes.Damage;
             }
@@ -24,15 +24,14 @@ namespace SomewhatClicker
             {
                 return Atributes.Damage;
             }
-
         }
 
         public static int ComputeMonsterStrike(int Damage, int CriticalChance)
         {
             Random Rnd = new Random();
-                int MonsterRNG = Rnd.Next(100);
+            int MonsterRNG = Rnd.Next(100);
 
-            if(MonsterRNG < Monsters.MonsterCrit)
+            if (MonsterRNG < Monsters.MonsterCrit)
             {
                 return 2 * Monsters.MonsterDmg;
             }
@@ -40,13 +39,11 @@ namespace SomewhatClicker
             {
                 return Monsters.MonsterDmg;
             }
-                 
-
         }
 
         public static Boolean CheckForDeath(int HP)
         {
-            if(HP <= 0)
+            if (HP <= 0)
             {
                 return true;
             }
@@ -55,6 +52,5 @@ namespace SomewhatClicker
                 return false;
             }
         }
-
     }
 }
