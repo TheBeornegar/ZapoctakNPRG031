@@ -51,7 +51,10 @@ namespace SomewhatClicker
                     Atributes.Dexterity = int.Parse(save.ReadLine());
                     Atributes.Charisma = int.Parse(save.ReadLine());
                     Atributes.Constitution = int.Parse(save.ReadLine());
+                    Atributes.Damage = int.Parse(save.ReadLine());
+                    Atributes.MaxHP = int.Parse(save.ReadLine());
                     Atributes.AbilityPoints = int.Parse(save.ReadLine());
+                    Atributes.CriticalChance = int.Parse(save.ReadLine());
                 }
                 this.Hide();
                 Form f2 = new Form2(this);
